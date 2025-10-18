@@ -1,5 +1,4 @@
 # Neuroscience-guided-EEGViT-for-Auditory-Attention-Decoding
-# [项目名称：例如，基于Vision Transformer的EEG视觉解码分析]
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
