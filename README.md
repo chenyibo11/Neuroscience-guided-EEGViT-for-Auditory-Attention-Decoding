@@ -2,29 +2,24 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-## 📖 Overview
+## 📖 Project Overview
 
-[This project addresses a critical challenge in Auditory Attention Decoding (AAD): effectively disentangling attended speech from raw Electroencephalogram (EEG) signals.
+This project addresses a critical challenge in **Auditory Attention Decoding (AAD)**: effectively disentangling attended speech from raw Electroencephalogram (EEG) signals.
 
 Conventional AAD models often fall short because they overlook fundamental neuroscience priors, such as:
-
-The brain's hierarchical processing of auditory stimuli.
-
-The temporal asynchrony between acoustic inputs and the corresponding neural responses.
-
-Interference from unattended speech that is also encoded in the EEG signal.
+* The brain's **hierarchical processing** of auditory stimuli.
+* The **temporal asynchrony** between acoustic inputs and the corresponding neural responses.
+* Interference from **unattended speech** that is also encoded in the EEG signal.
 
 This oversight leads to suboptimal decoding accuracy and models that are difficult to interpret.
 
-To overcome these limitations, we propose a neuroscience-inspired framework that explicitly integrates these priors into the model design. Our key contributions are:
+To overcome these limitations, we propose a **neuroscience-inspired framework** that explicitly integrates these priors into the model design. Our key contributions are:
 
-EEGViT: A novel architecture inspired by the Vision Transformer, designed to mimic the brain's hierarchical integration of auditory information by processing EEG in patches of varying temporal scales.
+1.  **EEGViT**: A novel architecture inspired by the Vision Transformer, designed to mimic the brain's hierarchical integration of auditory information by processing EEG in patches of varying temporal scales.
+2.  **Hierarchical Contrastive Learning (HCL)**: A fine-grained alignment strategy that matches EEG embeddings with their corresponding attended and unattended speech embeddings (extracted by WavLM).
+3.  **Hierarchical Mutual Information Minimization (HMIM)**: An objective function designed to actively suppress and disentangle the components of the unattended speech from the EEG representations.
 
-Hierarchical Contrastive Learning (HCL): A fine-grained alignment strategy that matches EEG embeddings with their corresponding attended and unattended speech embeddings (extracted by WavLM).
-
-Hierarchical Mutual Information Minimization (HMIM): An objective function designed to actively suppress and disentangle the components of the unattended speech from the EEG representations.
-
-We validated our framework on three public AAD datasets: KUL, DTU, and NJU. The results show that our approach substantially outperforms state-of-the-art methods, achieving higher accuracy while producing representations that are consistent with established neuroscience principles, thereby enhancing both performance and interpretability.]
+We validated our framework on three public AAD datasets: **KUL, DTU, and NJU**. The results show that our approach substantially outperforms state-of-the-art methods, achieving higher accuracy while producing representations that are consistent with established neuroscience principles, thereby enhancing both performance and interpretability.
 
 ---
 
