@@ -1,117 +1,166 @@
 # Neuroscience-guided-EEGViT-for-Auditory-Attention-Decoding
 
+GitHub Repository:  
+https://github.com/chenyibo11/Neuroscience-guided-EEGViT-for-Auditory-Attention-Decoding
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-
-## 📖 Project Overview
-
-This project addresses a critical challenge in **Auditory Attention Decoding (AAD)**: effectively disentangling attended speech from raw Electroencephalogram (EEG) signals.
-
-Conventional AAD models often fall short because they overlook fundamental neuroscience priors, such as:
-* The brain's **hierarchical processing** of auditory stimuli.
-* The **temporal asynchrony** between acoustic inputs and the corresponding neural responses.
-* Interference from **unattended speech** that is also encoded in the EEG signal.
-
-This oversight leads to suboptimal decoding accuracy and models that are difficult to interpret.
-
-To overcome these limitations, we propose a **neuroscience-inspired framework** that explicitly integrates these priors into the model design. Our key contributions are:
-
-1.  **EEGViT**: A novel architecture inspired by the Vision Transformer, designed to mimic the brain's hierarchical integration of auditory information by processing EEG in patches of varying temporal scales.
-2.  **Hierarchical Contrastive Learning (HCL)**: A fine-grained alignment strategy that matches EEG embeddings with their corresponding attended and unattended speech embeddings (extracted by WavLM).
-3.  **Hierarchical Mutual Information Minimization (HMIM)**: An objective function designed to actively suppress and disentangle the components of the unattended speech from the EEG representations.
-
-We validated our framework on three public AAD datasets: **KUL, DTU, and NJU**. The results show that our approach substantially outperforms state-of-the-art methods, achieving higher accuracy while producing representations that are consistent with established neuroscience principles, thereby enhancing both performance and interpretability.
 
 ---
 
-## 📂 Project Structure
+## 📖 Project Overview
 
-Here is a breakdown of the key directories and files in this project:
+This project addresses a fundamental challenge in **Auditory Attention Decoding (AAD)**: effectively disentangling attended speech from raw Electroencephalogram (EEG) signals.
 
-```
-.
-├── dataset/              # Stores processed datasets (e.g., .npy, .csv, .pt files)
-├── eegdata/              # Contains the raw EEG data
-├── model_path/           # Directory to save and load trained model checkpoints (.pth, .h5, etc.)
-├── models/               # Contains Python scripts defining the model architectures
-├── PM/                   # [Please add a detailed description for the 'PM' folder here]
-├── stimulus/             # Contains the visual stimulus materials (images, videos, etc.) used in the experiment
-├── vit-base-patch16-224/ # Stores the pre-trained Vision Transformer model files
-│
-├── get_feature.py        # Script for data preprocessing and feature extraction
-├── run_KUL_1s.py         # Main script to execute training, evaluation, or inference
-└── README.md             # This documentation file
-```
+Traditional AAD approaches often overlook key neuroscience priors:
+
+- The brain’s hierarchical auditory processing mechanism  
+- The temporal delay and asynchrony between acoustic input and neural responses  
+- The interference from unattended competing speech encoded in EEG  
+
+Ignoring these priors leads to limited decoding performance and reduced interpretability.
+
+To overcome these limitations, we propose a **neuroscience-guided EEGViT framework** integrating hierarchical modeling, contrastive learning, and mutual information minimization.
+
+---
+
+## 🧠 Core Contributions
+
+### 1️⃣ EEGViT
+
+A Vision Transformer-inspired architecture designed for EEG modeling.
+
+- Processes EEG signals as temporal patches  
+- Mimics hierarchical auditory processing in the cortex  
+- Learns multi-scale temporal representations  
+
+---
+
+### 2️⃣ Hierarchical Contrastive Learning (HCL)
+
+- Aligns EEG embeddings with:
+  - Attended speech embeddings  
+  - Unattended speech embeddings  
+- Speech features are extracted using WavLM  
+- Supports multi-negative contrastive objectives  
+
+---
+
+### 3️⃣ Hierarchical Mutual Information Minimization (HMIM)
+
+- Explicitly suppresses unattended speech information  
+- Encourages disentangled neural representations  
+- Improves robustness and interpretability  
+
+---
+
+## 📊 Datasets
+
+We validate our framework on three public AAD datasets:
+
+- KUL Dataset  
+- DTU Dataset  
+- NJU Dataset  
+
+The proposed framework consistently outperforms state-of-the-art baselines while producing neuroscientifically interpretable representations.
+
+---
+
+## 📂 Current Repository Structure
+
+The current repository includes:
+
+---
+
+## ⚠️ External / Optional Directories (Not Included in Repo)
+
+The following directories are **not included** in the repository and must be prepared manually if needed:
+
+### eegdata/
+- Contains processed EEG `.npy` or `.pt` files  
+- These are self-processed private data files  
+- If access is required, please contact via email  
+
+### stimulus/
+- Stores extracted audio stimulus features  
+- Automatically generated by running:
+
+
+- Includes speech embeddings extracted via WavLM  
+
+### PM/
+- Used to store WavLM pre-trained model weights  
+- Please manually download WavLM weights and place them here  
+
+### vit-base-patch16-224/
+- Stores original pre-trained EEGViT model weights  
+- Optional, only needed if initializing from pretrained weights  
+
+### model_path/
+- Used to save trained model checkpoints  
+- Will be automatically created during training if not present  
 
 ---
 
 ## 🚀 Getting Started
 
-Follow these steps to set up and run the project on your local machine.
+### 1️⃣ Clone Repository
 
-### 1. Prerequisites & Installation
 
-First, clone the repository to your local machine:
-```bash
-git clone [Your Repository SSH or HTTPS URL]
-cd [Your Project Folder Name]
-```
+---
 
-It is highly recommended to use a virtual environment (like `venv` or `conda`) to manage dependencies.
+### 2️⃣ Environment Setup
 
-```bash
-# Create and activate a venv
-python -m venv venv
-source venv/bin/activate  # On Windows, use: venv\Scripts\activate
-```
+We recommend using a virtual environment:
 
-Next, install the required packages.
-**Note**: Please create a `requirements.txt` file based on the imports in your Python scripts (e.g., `torch`, `numpy`, `pandas`, `scikit-learn`, `mne`).
+All required dependencies are listed in:
 
-```bash
-pip install -r requirements.txt
-```
+Install them using:
 
-### 2. Data Preparation
+---
 
-1.  **EEG Data**: Download the raw EEG data and place it inside the `eegdata/` directory.
-2.  **Stimulus Materials**: Place all visual stimuli (images/videos) into the `stimulus/` directory.
-3.  **Pre-trained Model**: Download the `vit-base-patch16-224` model from [Provide a link to the model source, e.g., Hugging Face] and ensure the files are located in the `vit-base-patch16-224/` directory.
+### 3️⃣ Feature Extraction (Speech Embeddings)
 
-[If necessary, add more detailed instructions here about the expected data structure.]
+To generate speech features using WavLM:
 
-### 3. How to Run
+This will extract speech embeddings and save them into the `stimulus/` directory.
 
-1.  **(Optional) Feature Extraction**
-    If your workflow requires a separate feature extraction step, run the `get_feature.py` script.
-    ```bash
-    python get_feature.py --input_path eegdata/ --output_path dataset/
-    ```
-    *[Modify the command and its arguments according to your script's implementation.]*
+---
 
-2.  **Train and Evaluate the Model**
-    Use the main script `run_KUL_1s.py` to start the model training and evaluation process.
-    ```bash
-    python run_KUL_1s.py --config [path/to/config.yaml] --mode train
-    ```
-    *[Adjust the command and its arguments (e.g., participant ID, epochs, learning rate) as needed for your script.]*
+### 4️⃣ Train and Evaluate
+
+Main script:
+
+Run training:
+
+You may modify arguments (e.g., subject ID, epochs, learning rate) within the script or via command-line flags as implemented.
 
 ---
 
 ## 🔧 Tech Stack
 
-* **Programming Language**: Python 3.x
-* **Core Framework**: [e.g., PyTorch, TensorFlow]
-* **Key Libraries**: [e.g., NumPy, Pandas, Scikit-learn, MNE-Python, Matplotlib]
+- Programming Language: Python 3.x  
+- Deep Learning Framework: PyTorch  
+- Speech Encoder: WavLM  
+- EEG Processing: MNE-Python  
+- Machine Learning Utilities: Scikit-learn  
 
 ---
 
 ## 📜 License
 
-This project is licensed under the MIT License. See the `LICENSE` file for more details.
+This project is licensed under the MIT License.
 
 ---
 
-## 🙏 Acknowledgements (Optional)
+## 📬 Contact
 
-* We would like to thank [Name of the data provider, e.g., KU Leuven] for providing the dataset.
-* The model implementation was inspired by [Link to a relevant paper or code repository].
+If you require access to processed EEG data or have collaboration inquiries, please contact:
+
+your_email_here
+
+---
+
+## 🙏 Acknowledgements
+
+- We thank the providers of the KUL, DTU, and NJU datasets.
+- The speech encoder is based on the WavLM model developed by Microsoft Research.
