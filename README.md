@@ -65,12 +65,6 @@ The proposed framework consistently outperforms state-of-the-art baselines while
 
 ---
 
-## 📂 Current Repository Structure
-
-The current repository includes:
-
----
-
 ## ⚠️ External / Optional Directories (Not Included in Repo)
 
 The following directories are **not included** in the repository and must be prepared manually if needed:
@@ -104,23 +98,17 @@ The following directories are **not included** in the repository and must be pre
 ## 🚀 Getting Started
 
 ### 1️⃣ Clone Repository
-
-
 ---
 
 ### 2️⃣ Environment Setup
 
-We recommend using a virtual environment:
-
-All required dependencies are listed in:
-
-Install them using:
+Install them using:  pip install -r requirements.txt
 
 ---
 
 ### 3️⃣ Feature Extraction (Speech Embeddings)
 
-To generate speech features using WavLM:
+To generate speech features using WavLM:  python get_feature.py
 
 This will extract speech embeddings and save them into the `stimulus/` directory.
 
@@ -128,9 +116,8 @@ This will extract speech embeddings and save them into the `stimulus/` directory
 
 ### 4️⃣ Train and Evaluate
 
-Main script:
 
-Run training:
+Run training:  python run_KUL_CL_wavlm_frequency_chosen_multi_negative_MI_1s_new.py
 
 You may modify arguments (e.g., subject ID, epochs, learning rate) within the script or via command-line flags as implemented.
 
@@ -138,7 +125,7 @@ You may modify arguments (e.g., subject ID, epochs, learning rate) within the sc
 
 ## 🔧 Tech Stack
 
-- Programming Language: Python 3.x  
+- Programming Language: Python 3.9 
 - Deep Learning Framework: PyTorch  
 - Speech Encoder: WavLM  
 - EEG Processing: MNE-Python  
@@ -156,7 +143,7 @@ This project is licensed under the MIT License.
 
 If you require access to processed EEG data or have collaboration inquiries, please contact:
 
-your_email_here
+y13240017@mail.ecust.edu.cn
 
 ---
 
