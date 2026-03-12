@@ -275,16 +275,9 @@ def plotPCA(data1, data2, data3, data4):
     plt.close()
 
 def min_max_norm(tensor):
-    # min_val = (tensor.min(dim=-1).values).unsqueeze(-1)   # 按特征维度计算最小值 
-    # max_val = (tensor.max(dim=-1).values).unsqueeze(-1) 
-    # return (tensor - min_val) / (max_val - min_val + 1e-8)
     mean = tensor.mean(dim=-1).unsqueeze(-1)     # 按特征维度计算均值 
     std = tensor.std(dim=-1).unsqueeze(-1) 
     return (tensor - mean) / (std + 1e-8)
-    #max_val = torch.abs(tensor).max(dim=-1).values.unsqueeze(-1)
-    #j = torch.ceil(torch.log10(max_val))
-    #normalized_data = tensor / (10 ** j)
-    #return normalized_data
 
 def pairwise_orthogonal_loss(a, b, normalized=True):
     dot_products = (a * b).sum(dim=1)  # Shape: (batch,)
