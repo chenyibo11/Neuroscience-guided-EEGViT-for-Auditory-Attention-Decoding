@@ -3,6 +3,12 @@
 GitHub Repository:  
 https://github.com/chenyibo11/Neuroscience-guided-EEGViT-for-Auditory-Attention-Decoding
 
+## 📝 论文信息 (Paper)
+
+* **题目 (Title):** [Neuroscience Prior knowledge guided EEG representation disentanglement for auditory attention decoding]
+* **期刊 (Journal):** [Hearing Research].
+* **DOI:** [10.1016/j.heares.2026.109625](https://doi.org/10.1016/j.heares.2026.109625)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
@@ -151,3 +157,23 @@ y13240017@mail.ecust.edu.cn
 
 - We thank the providers of the KUL, DTU, and NJU datasets.
 - The speech encoder is based on the WavLM model developed by Microsoft Research.
+
+## 🔗 引用 (Citation)
+
+如果您在研究中使用了本项目，请引用我们的论文：
+
+**BibTeX:**
+```bibtex
+@article{CHEN2026109625,
+title = {Neuroscience Prior knowledge guided EEG representation disentanglement for auditory attention decoding},
+journal = {Hearing Research},
+volume = {475},
+pages = {109625},
+year = {2026},
+issn = {0378-5955},
+doi = {https://doi.org/10.1016/j.heares.2026.109625},
+url = {https://www.sciencedirect.com/science/article/pii/S0378595526001012},
+author = {Yibo Chen and Ning Chen and Yixiang Niu and Dingxin Chen and Wenze Qiu and Hongqing Zhu and Zhiying Zhu},
+keywords = {Electroencephalogram, Auditory attention decoding, Hierarchical contrastive learning, Prior knowledge, Disentanglement},
+abstract = {Disentangling attended speech-related components from Electroencephalogram (EEG) signals is essential for achieving high-accuracy Auditory Attention Decoding (AAD). However, most existing AAD models overlook critical neuroscience priors-such as the brain’s hierarchical processing of auditory stimuli, the temporal asynchrony between auditory inputs and neural responses, and the interference from unattended speech embedded in EEG. Neglecting these priors often leads to insufficient disentanglement and limited interpretability. To address these limitations, we propose a neuroscience-inspired framework that explicitly incorporates such priors into AAD. Specifically, we adopt EEGViT, which segments EEG into fixed-length patches and hierarchically integrates them to capture semantic representations, inspired by the brain’s progressive integration of auditory information (shorter in primary areas and longer in higher-order areas). On top of this, we introduce a Hierarchical Contrastive Learning (HCL) strategy to achieve fine-grained alignment between EEG embeddings and speech embeddings (attended or unattended) extracted by WavLM. Finally, we develop Hierarchical Mutual Information Minimization (HMIM) to further disentangle attended from unattended speech components. Extensive experiments on three publicly available datasets show that our framework substantially outperforms state-of-the-art AAD methods. Ablation studies confirm the individual contributions of each proposed component, while further analyses demonstrate that the learned representations are consistent with established neuroscience priors, thereby enhancing both performance and interpretability.}
+}
